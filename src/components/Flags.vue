@@ -17,7 +17,7 @@
           ref="input"
           type="text"
           v-model="userAnswer"
-          class="rounded-sm shadow-lg transition duration-300 w-[200px] py-1 px-3 uppercase border border-[#A9C2DA]"
+          class="rounded-sm shadow-lg transition duration-300 w-[400px] py-1 px-3 uppercase border border-[#A9C2DA]"
         />
         <input
           v-show="!message"
