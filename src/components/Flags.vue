@@ -1,20 +1,42 @@
 <template>
-  {{ id }}
   <div
     class="w-[400px] h-[300px] shadow-lg p-4 flex items-center justify-center"
   >
     <img
-      :src="`${allFlags[id].flag}`"
+      :src="allFlags[id]?.flag"
       width="400"
       height="300"
       class="border border-black max-h-full"
     />
   </div>
-  <div>{{ allFlags[id].name }}</div>
-  <button @click="drawFlag()" class="rounded-sm shadow py-1 px-3 uppercase">
+  <div>{{ allFlags[id]?.name }}</div>
+  <div class="flex items-center mt-4">
+    <form @submit.prevent="checkAnswer()">
+      <input
+        ref="input"
+        type="text"
+        v-model="userAnswer"
+        class="rounded-sm shadow-lg transition duration-300 w-[200px] py-1 px-3 uppercase border border-[#A9C2DA]"
+      />
+      <input
+        class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase ml-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
+        type="submit"
+        value="check"
+      />
+    </form>
+    <span :class="`ml-4`" :style="{ color: message.color }">{{
+      message.text
+    }}</span>
+  </div>
+  <button
+    v-show="message.ok"
+    ref="next"
+    @click="drawFlag()"
+    class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase mt-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
+  >
     next
   </button>
-  <pre>{{ allFlags[0] }}</pre>
+  <!-- <pre>{{ allFlags[0] }}</pre> -->
 </template>
 
 <script>
@@ -33,6 +55,8 @@ export default {
       allFlags: [],
       flagUrl: '',
       id: '',
+      userAnswer: '',
+      message: '',
     };
   },
   async created() {
@@ -40,9 +64,36 @@ export default {
     this.allFlags = res.data.data;
     this.id = getRandomId(1, this.allFlags.length);
   },
+  mounted() {
+    this.focusInput();
+  },
   methods: {
+    focusInput() {
+      this.$refs.input.focus();
+    },
+    focusNext() {
+      this.$refs.next.focus();
+    },
     drawFlag() {
       this.id = getRandomId(1, this.allFlags.length);
+      this.message = '';
+      this.userAnswer = '';
+      this.focusInput();
+    },
+    checkAnswer() {
+      if (
+        this.userAnswer.toLocaleLowerCase() ===
+        this.allFlags[this.id].name.toLocaleLowerCase()
+      ) {
+        this.message = { ok: true, text: 'Correct!', color: '#53a653' };
+        this.$refs.next.style.display = 'block';
+        this.focusNext();
+      } else {
+        this.message = { ok: false, text: 'Try again', color: '#e53935' };
+        setTimeout(() => {
+          this.message = '';
+        }, 1000);
+      }
     },
   },
 };
