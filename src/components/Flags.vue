@@ -1,42 +1,44 @@
 <template>
-  <div
-    class="w-[400px] h-[300px] shadow-lg p-4 flex items-center justify-center"
-  >
-    <img
-      :src="allFlags[id]?.flag"
-      width="400"
-      height="300"
-      class="border border-black max-h-full"
-    />
-  </div>
-  <div>{{ allFlags[id]?.name }}</div>
-  <div class="flex items-center mt-4">
-    <form @submit.prevent="checkAnswer()">
-      <input
-        ref="input"
-        type="text"
-        v-model="userAnswer"
-        class="rounded-sm shadow-lg transition duration-300 w-[200px] py-1 px-3 uppercase border border-[#A9C2DA]"
+  <div class="p-10">
+    <div
+      class="w-[400px] h-[300px] shadow-lg p-2 flex items-center justify-center bg-white"
+    >
+      <img
+        :src="allFlags[id]?.flag"
+        width="400"
+        height="300"
+        class="border border-black max-h-full"
       />
-      <input
-        class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase ml-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
-        type="submit"
-        value="check"
-      />
-    </form>
-    <span :class="`ml-4`" :style="{ color: message.color }">{{
-      message.text
-    }}</span>
+    </div>
+    <div class="mt-2">{{ allFlags[id]?.name }}</div>
+    <div class="flex items-center mt-4">
+      <form @submit.prevent="checkAnswer()">
+        <input
+          ref="input"
+          type="text"
+          v-model="userAnswer"
+          class="rounded-sm shadow-lg transition duration-300 w-[200px] py-1 px-3 uppercase border border-[#A9C2DA]"
+        />
+        <input
+          class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase ml-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
+          type="submit"
+          value="check"
+        />
+      </form>
+      <span :class="`ml-4`" :style="{ color: message.color }">{{
+        message.text
+      }}</span>
+    </div>
+    <button
+      v-show="message.ok"
+      ref="next"
+      @click="drawFlag()"
+      class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase mt-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
+    >
+      next
+    </button>
+    <!-- <pre>{{ allFlags[0] }}</pre> -->
   </div>
-  <button
-    v-show="message.ok"
-    ref="next"
-    @click="drawFlag()"
-    class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase mt-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
-  >
-    next
-  </button>
-  <!-- <pre>{{ allFlags[0] }}</pre> -->
 </template>
 
 <script>
