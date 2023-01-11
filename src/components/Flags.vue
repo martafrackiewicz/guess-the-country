@@ -1,5 +1,6 @@
 <template>
   <div class="p-10">
+    <h1 class="text-3xl mb-6 uppercase">Flags</h1>
     <div
       class="w-[400px] h-[300px] shadow-lg p-2 flex items-center justify-center bg-white"
     >
