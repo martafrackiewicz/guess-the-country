@@ -19,7 +19,7 @@
         <router-link to="/capitals"
           ><div class="shadow-xl hover:shadow-2xl p-8">
             <img
-              alt="flag example"
+              alt="city example"
               src="../assets/city.jpg"
               width="428"
               height="285"

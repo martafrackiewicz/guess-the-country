@@ -4,5 +4,6 @@
 
 body {
   font-family: 'Ubuntu', sans-serif;
-  @apply bg-zinc-100;
+  height: 100vh;
+  background: linear-gradient(180deg, #fafafa 0%, #f4f4f5 20%, #e4e4e7 100%);
 }

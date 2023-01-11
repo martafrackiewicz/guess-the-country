@@ -19,6 +19,7 @@
           type="text"
           v-model="userAnswer"
           class="rounded-sm shadow-lg transition duration-300 w-[400px] py-1 px-3 uppercase border border-[#A9C2DA]"
+          placeholder="Country"
         />
         <input
           v-show="!message"
@@ -27,7 +28,7 @@
           value="check"
         />
       </form>
-      <span :class="`ml-4`" :style="{ color: message.color }">{{
+      <span class="ml-4 text-lg" :style="{ color: message.color }">{{
         message.text
       }}</span>
     </div>
@@ -66,7 +67,7 @@ export default {
   async created() {
     const res = await getFlags();
     this.allFlags = res.data.data;
-    this.id = getRandomId(1, this.allFlags.length);
+    this.id = getRandomId(0, this.allFlags.length);
   },
   mounted() {
     this.focusInput();
@@ -79,7 +80,7 @@ export default {
       this.$refs.next.focus();
     },
     drawFlag() {
-      this.id = getRandomId(1, this.allFlags.length);
+      this.id = getRandomId(0, this.allFlags.length);
       this.message = '';
       this.userAnswer = '';
       this.focusInput();
