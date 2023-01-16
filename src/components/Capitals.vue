@@ -9,7 +9,7 @@
       </a>
       <h1 class="text-3xl uppercase">Capital cities</h1>
     </div>
-    <div class="flex gap-4">
+    <div class="flex gap-4 mb-8">
       <button
         @click="displayCapital()"
         class="rounded-sm shadow-lg transition duration-300 py-1 px-3 uppercase bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
@@ -92,11 +92,14 @@ export default {
   async created() {
     const res = await getCapitals();
     this.allCapitals = res.data.data;
-    this.id = getRandomId(0, this.allCapitals.length);
   },
-  mounted() {
-    this.focusInput();
-  },
+  // updated() {
+  //   if (this.message.text !== 'Correct') {
+  //     this.focusInput();
+  //   } else {
+  //     this.focusNext();
+  //   }
+  // },
   methods: {
     displayCapital() {
       this.game = 'capital';
@@ -116,7 +119,7 @@ export default {
       this.id = getRandomId(0, this.allCapitals.length);
       this.message = '';
       this.userAnswer = '';
-      this.focusInput();
+      this.$nextTick(() => this.focusInput());
     },
     checkAnswer() {
       const currentCountry = this.allCapitals[this.id];
