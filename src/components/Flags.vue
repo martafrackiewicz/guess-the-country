@@ -1,6 +1,14 @@
 <template>
   <div class="p-10">
-    <h1 class="text-3xl mb-6 uppercase">Flags</h1>
+    <div class="flex mb-8">
+      <a
+        href="/"
+        class="rounded-full shadow-lg transition duration-300 w-[40px] h-[40px] mr-6 text-2xl bg-[#A9C2DA] hover:bg-[#A9C2DA95] flex justify-center items-center"
+      >
+        &#8592;
+      </a>
+      <h1 class="text-3xl uppercase">Flags</h1>
+    </div>
     <div
       class="w-[400px] h-[300px] shadow-lg p-2 flex items-center justify-center bg-white"
     >

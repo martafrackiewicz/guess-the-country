@@ -1,7 +1,15 @@
 <template>
   <div class="p-10">
-    <h1 class="text-3xl uppercase">Capital cities</h1>
-    <div class="flex gap-4 my-8">
+    <div class="flex mb-8">
+      <a
+        href="/"
+        class="rounded-full shadow-lg transition duration-300 w-[40px] h-[40px] mr-6 text-2xl bg-[#A9C2DA] hover:bg-[#A9C2DA95] flex justify-center items-center"
+      >
+        &#8592;
+      </a>
+      <h1 class="text-3xl uppercase">Capital cities</h1>
+    </div>
+    <div class="flex gap-4">
       <button
         @click="displayCapital()"
         class="rounded-sm shadow-lg transition duration-300 py-1 px-3 uppercase bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
