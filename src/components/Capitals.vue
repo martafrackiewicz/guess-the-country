@@ -100,9 +100,11 @@ export default {
   methods: {
     displayCapital() {
       this.game = 'capital';
+      this.drawFlag();
     },
     displayCountry() {
       this.game = 'country';
+      this.drawFlag();
     },
     focusInput() {
       this.$refs.input.focus();
