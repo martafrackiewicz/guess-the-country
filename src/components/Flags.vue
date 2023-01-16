@@ -23,7 +23,7 @@
         />
         <input
           v-show="!message"
-          class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase ml-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95]"
+          class="rounded-sm shadow-lg transition duration-300 w-[120px] py-1 px-3 uppercase ml-4 bg-[#A9C2DA] hover:bg-[#A9C2DA95] cursor-pointer"
           type="submit"
           value="check"
         />
